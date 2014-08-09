@@ -1,20 +1,20 @@
 // 1. Select from a dropdown menu of movie genres
-// 2. Select 
 
 var movieApp = {};
 
 movieApp.key = "7fb7426481eed21217e4ee7dc69256d4";
 
 movieApp.init = function() {
-
 	// CODE FOR DROPDOWN MENU
 	movieApp.getGenre('18');
 	// change to .click
+	// Click function will run after all user entered criteria has been met
 	$('#genre').on('change', function(){
 		var genre = $(this).val();
 		// var rating
 		// var length
-		console.log(genre);
+		// console.log(genre);
+		$('#genreType').empty();
 		movieApp.getGenre(genre);
 	});
 }
@@ -39,7 +39,11 @@ movieApp.displayMovie = function(data){
 	$.each(data, function(i, movie){
 		console.log(movie.title);
 		var title = $('<h2>').text(movie.title);
-		var thisGenre = $('<div>').addClass('movie').append(title);
+		var poster = $('<img>').attr('src', 'http://image.tmdb.org/t/p/w185/' + movie.poster_path);
+		var thisGenre = $('<div>').addClass('movie').append(title, poster);
+
+
+		// var poster = $('<div>').addClass('movie').append(poster);
 		$('#genreType').append(thisGenre);
 	});
 }
@@ -48,5 +52,5 @@ $(function(){
 	movieApp.init();
 });
 
-// Getgenre automatically runs when the drop down is selected
+// Get genre automatically runs when the drop down is selected
 // Don't run on 'change' run '.clicj'
