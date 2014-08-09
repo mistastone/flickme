@@ -66,6 +66,38 @@ body {
 }
 
 h1 {
-	font-size: 25px;
+	font: 700 75px/100% "Oswald", "Open Sans", sans-serif; 
 	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.container {
+	font: 400 25px/100% "Oswald", "Open Sans", sans-serif;
+  	max-width: 1200px;
+  	margin: 0 auto;
+  	padding: 50px;
+  	overflow: hidden; /*clearfix*/
+}
+
+.movie {
+	width: 40%;
+	clear: both;
+}
+
+.movie img{
+	float:left;
+ 	width: 100%;
+  	margin-right: 20px;
+  	margin-bottom: 30px;
+  	border: solid 5px #000;
+}
+
+select {
+	font: 400 25px/100% "Oswald", "Open Sans", sans-serif;
+	background-color: #B81F24;
+}
+
+h2 {
+	display: block;
 }

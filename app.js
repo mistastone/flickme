@@ -6,7 +6,7 @@ movieApp.key = "7fb7426481eed21217e4ee7dc69256d4";
 
 movieApp.init = function() {
 	// CODE FOR DROPDOWN MENU
-	movieApp.getGenre('18');
+	movieApp.getGenre('28');
 	// change to .click
 	// Click function will run after all user entered criteria has been met
 	$('#genre').on('change', function(){
@@ -39,11 +39,8 @@ movieApp.displayMovie = function(data){
 	$.each(data, function(i, movie){
 		console.log(movie.title);
 		var title = $('<h2>').text(movie.title);
-		var poster = $('<img>').attr('src', 'http://image.tmdb.org/t/p/w185/' + movie.poster_path);
+		var poster = $('<img>').attr('src', 'http://image.tmdb.org/t/p/w396/' + movie.poster_path);
 		var thisGenre = $('<div>').addClass('movie').append(title, poster);
-
-
-		// var poster = $('<div>').addClass('movie').append(poster);
 		$('#genreType').append(thisGenre);
 	});
 }
