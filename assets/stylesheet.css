@@ -92,3 +92,8 @@ select {
 
 h2 {
   display: block; }
+
+input {
+  font: 400 25px/100% "Oswald", "Open Sans", sans-serif;
+  background-color: #B81F24;
+  color: #000; }

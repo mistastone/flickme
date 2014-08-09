@@ -9,15 +9,39 @@ movieApp.init = function() {
 	movieApp.getGenre('28');
 	// change to .click
 	// Click function will run after all user entered criteria has been met
-	$('#genre').on('change', function(){
-		var genre = $(this).val();
+	$('#clickMe').on('click', function(){
+		var genre = $('#genre').val();
 		// var rating
 		// var length
-		// console.log(genre);
+		console.log(genre);
 		$('#genreType').empty();
 		movieApp.getGenre(genre);
 	});
+
 }
+// movieApp.init = function() {
+// 	var query = $('#search').val();
+// 	$('#clickMe').on('click', function(){
+// 		query = $('#search').val();
+// 		movieApp.getYear(query);
+// 	});
+// }
+
+// movieApp.getYear = function(query){
+// 	$.ajax ({
+// 		url: 'https://api.themoviedb.org/3/discover/movie',
+// 		type: 'GET',
+// 		data: {
+// 			api_key: movieApp.key
+// 			// format: 'jsonp'
+// 		},
+// 		dataType: 'jsonp',
+// 		success: function(result){
+// 			console.log(result);
+// 			movieApp.displayMovie(result.results);
+// 		}
+// 	});
+// }
 
 movieApp.getGenre = function(query){
 	$.ajax ({
@@ -40,7 +64,8 @@ movieApp.displayMovie = function(data){
 		console.log(movie.title);
 		var title = $('<h2>').text(movie.title);
 		var poster = $('<img>').attr('src', 'http://image.tmdb.org/t/p/w396/' + movie.poster_path);
-		var thisGenre = $('<div>').addClass('movie').append(title, poster);
+		var year = $('<p>').text(movie.year);
+		var thisGenre = $('<div>').addClass('movie').append(title, poster, year);
 		$('#genreType').append(thisGenre);
 	});
 }
