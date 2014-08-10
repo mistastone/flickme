@@ -6,42 +6,22 @@ movieApp.key = "7fb7426481eed21217e4ee7dc69256d4";
 
 movieApp.init = function() {
 	// CODE FOR DROPDOWN MENU
-	movieApp.getGenre('28');
+	// movieApp.getGenre('28');
 	// change to .click
 	// Click function will run after all user entered criteria has been met
 	$('#clickMe').on('click', function(){
 		var genre = $('#genre').val();
+		var year = $('#searchYear').val();
 		// var rating
 		// var length
+		console.log(year);
 		console.log(genre);
 		$('#genreType').empty();
 		movieApp.getGenre(genre);
+		movieApp.getYears(year);
 	});
 
 }
-// movieApp.init = function() {
-// 	var query = $('#search').val();
-// 	$('#clickMe').on('click', function(){
-// 		query = $('#search').val();
-// 		movieApp.getYear(query);
-// 	});
-// }
-
-// movieApp.getYear = function(query){
-// 	$.ajax ({
-// 		url: 'https://api.themoviedb.org/3/discover/movie',
-// 		type: 'GET',
-// 		data: {
-// 			api_key: movieApp.key
-// 			// format: 'jsonp'
-// 		},
-// 		dataType: 'jsonp',
-// 		success: function(result){
-// 			console.log(result);
-// 			movieApp.displayMovie(result.results);
-// 		}
-// 	});
-// }
 
 movieApp.getGenre = function(query){
 	$.ajax ({
@@ -59,14 +39,31 @@ movieApp.getGenre = function(query){
 	});
 }
 
+movieApp.getYears = function(query){
+	$.ajax ({
+		url: 'https://api.themoviedb.org/3/discover/movie?year='+ query,
+		type: 'GET',
+		data: {
+			api_key: movieApp.key
+		},
+		dataType: 'jsonp',
+		success: function(result){
+			console.log(result);
+			movieApp.displayMovie(result.results);
+		}
+	});
+}
+
+
 movieApp.displayMovie = function(data){
 	$.each(data, function(i, movie){
 		console.log(movie.title);
+		console.log(movie.release_date);
 		var title = $('<h2>').text(movie.title);
 		var poster = $('<img>').attr('src', 'http://image.tmdb.org/t/p/w396/' + movie.poster_path);
-		var year = $('<p>').text(movie.year);
-		var thisGenre = $('<div>').addClass('movie').append(title, poster, year);
-		$('#genreType').append(thisGenre);
+		var thisYear = $('<p>').text(movie.year);
+		var thisGenre = $('<div>').addClass('movie').append(title, poster, thisYear);
+		$('#genreType').append(thisGenre, thisYear);
 	});
 }
 

@@ -65,7 +65,8 @@ h1 {
   font: 700 75px/100% "Oswald", "Open Sans", sans-serif;
   text-align: center;
   margin-top: 30px;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  padding: 10px; }
 
 .container {
   font: 400 25px/100% "Oswald", "Open Sans", sans-serif;
@@ -88,7 +89,16 @@ h1 {
 
 select {
   font: 400 25px/100% "Oswald", "Open Sans", sans-serif;
-  background-color: #B81F24; }
+  background-color: #B81F24;
+  border-radius: 5px;
+  border: solid 2px black; }
+
+select:focus {
+  outline: none; }
+
+option:focus {
+  background-color: #B81F24;
+  outline: none; }
 
 h2 {
   display: block; }
@@ -96,4 +106,30 @@ h2 {
 input {
   font: 400 25px/100% "Oswald", "Open Sans", sans-serif;
   background-color: #B81F24;
-  color: #000; }
+  color: #000;
+  border: solid 2px black;
+  border-radius: 5px;
+  width: 100px; }
+
+input:focus {
+  background-color: rgba(127, 11, 0, 0.5);
+  border: solid 2px black;
+  outline: none; }
+
+button {
+  font: 400 25px/100% "Oswald", "Open Sans", sans-serif;
+  background-color: #B81F24;
+  margin-left: auto;
+  color: #000;
+  border-radius: 5px;
+  border: solid 2px black;
+  padding: 7px;
+  -webkit-box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 2px black;
+  outline: none; }
+
+button:hover {
+  background-color: rgba(127, 11, 0, 0.5);
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out; }
